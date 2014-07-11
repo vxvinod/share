@@ -1,0 +1,50 @@
+<div class="peopleList">
+	<input type="text" id='dataTableSearch' placeholder="Search... Use Ctrl+F to access " /> 
+	<table class="a">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>State</th>
+				<th>Time</th>
+			</tr>
+		<thead>
+		<tbody id="scroll">
+			<% @agents_list.each do |name,state,time| %>
+				<tr>
+					<td><%= name %></td>
+					<td class='agentState'><%= state %></td>
+					<td><%= time %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+	//For Custom Scroller
+	// $("#scroll").jScrollPane();
+
+	//Agent State Colour
+	$('td.agentState').each(function(){
+		this.style.color = this.innerHTML=='Available'?'green':(this.innerHTML=='Unavailable'?'red':(this.innerHTML=='On a Call'?'purple':this.style.color));
+	}); 
+
+	var agent_table = $('.a').dataTable({
+       "bPaginate": false,
+    });
+    agent_table.fnSort([[1,'asc'], [0,'asc']]);
+
+    $('#dataTableSearch').keyup(function(){
+    	agent_table.fnFilter( $(this).val() );
+	});
+
+	$(document).jkey('ctrl+f',function(){
+  		$('#dataTableSearch').focus();
+	});
+
+});
+</script>

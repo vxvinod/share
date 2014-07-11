@@ -1,0 +1,25 @@
+<%= content_tag :main, :id => 'message_box' do%>
+<% end %>
+
+<script type="text/javascript">
+    window.onload= function fetchAgentList() {
+    jQuery("#pagination_image").toggle(true);
+      jQuery.ajax({
+        url: 'acd/get_agent_list',
+        type: 'get',
+        async: true,
+        data: {},
+        success : function(result){
+            jQuery("#pagination_image").toggle(false);
+          jQuery('#message_box').html(result);
+        },
+        error : function(err) {
+            jQuery("#pagination_image").toggle(false);
+          jQuery('#message_box').html("Agents' list fetch failed.");
+        },
+        complete: function(){
+          setTimeout(fetchAgentList, 5000);
+        }
+      });
+    };
+</script>

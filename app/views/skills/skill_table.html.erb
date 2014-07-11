@@ -1,0 +1,138 @@
+<%= content_tag :main, :id => 'message_box' do%>
+<% end %>
+
+
+<div class="md-modal md-effect-1" id="modal-1">
+  <div class="md-content">
+    <h3>Set Threshold Values</h3>
+    <div>
+      <!-- Sales Abandon Rate -->
+      <div class="inputwrap">
+        <label class='modal-text-label' for='salesAbandonThreshold'>Sales Abandon Rate</label>
+        <input class='modal-text-box' placeholder='Fetching...' id='salesAbandonThreshold' type="text"/>
+      </div>
+      <!-- Service Abandon Rate -->
+      <div class="inputwrap">
+        <label class='modal-text-label' for='serviceAbandonThreshold'>Service Abandon Rate</label>
+        <input class='modal-text-box' placeholder='Fetching...' id='serviceAbandonThreshold' type="text"/>
+      </div>
+      <!-- Web Notifications Toggle Switch -->
+      <div class="WebNotificationsOption">
+        <label>Desktop Notifications</label>
+        <div class="onoffswitch onoffswitch-checked">
+          <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
+          <label class="onoffswitch-label" for="myonoffswitch">
+            <div class="onoffswitch-inner"></div>
+            <div class="onoffswitch-switch"></div>
+          </label>
+        </div>
+      </div>
+      <!-- Update Button -->
+      <div class='modalButtonsArea' id='modalButtons'>
+        <button class="modal-button" id="thresholdUpdateButton" onclick="setAbandonThreshold();">Update</button>
+        <button class="modal-button md-close" onclick="updateBackOn();">Exit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="md-overlay"></div>
+
+<%= javascript_include_tag "modalEffects/modalEffects" %>
+<%= javascript_include_tag "modalEffects/classie" %>
+
+<script type="text/javascript">
+
+/* Body On Load */
+
+    window.onload= function fetchSkillParams() {
+
+      //Desktop Notifications
+      <%= $desktop_notifications %> == 1 ? myonoffswitch.checked = true : myonoffswitch.checked = false;
+
+      $('.onoffswitch-label').click(function(){  
+          $(this).parent().toggleClass('onoffswitch-checked');  
+      });  
+
+      jQuery("#pagination_image").toggle(true);
+      $('#thresholdSettings').show();
+      $('#thresholdSettings').on('mouseenter mouseleave', function(){
+        $('#thresholdSettings').toggleClass('fa-spin');
+      });
+
+      //Ajax Call
+      jQuery.ajax({
+        url: 'skills/full_skill_summary',
+        type: 'post',
+        async: true,
+        data: {},
+        success : function(result){
+          jQuery("#pagination_image").toggle(false);
+          jQuery('#message_box').html(result);
+        },
+        error : function(err) {
+          jQuery("#pagination_image").toggle(false);
+          jQuery('#message_box').html("Skill fetch failed.");
+        },
+        complete: function(){
+          setTimeout(fetchSkillParams, 15000);
+        }
+      });
+  };
+
+/* SET Threshold Values Function */
+
+  function setAbandonThreshold(){
+    var thing = document.getElementById('thresholdUpdateButton');
+    thing.innerHTML='Updating...';
+    jQuery.ajax({
+      url: 'skills/edit_threshold_value',
+      type: 'post',
+      async: true,
+      data: { service_abandon_threshold : serviceAbandonThreshold.value, sales_abandon_threshold : salesAbandonThreshold.value },
+      success: function(result){
+        thing.innerHTML='Success';
+      },
+      error: function(err){
+        thing.innerHTML='Error';
+      }
+    });
+  }
+
+ /*Set Update Back on */
+  function updateBackOn(){
+    document.getElementById('thresholdUpdateButton').innerHTML='Update';
+  }
+
+  /* Desktop Notifications */
+
+  var myNotification = new Notify('ACD Viewer', {
+    body: 'Notification Preferences Changed',
+    icon: '/customink_logo.png'
+  });
+
+  function webNotifyShow(){
+    if (Notify.isSupported()){
+     if (Notify.needsPermission())
+        Notify.requestPermission();
+    }
+  }
+
+  $('#myonoffswitch').click(function(){
+    webNotifyShow();
+    jQuery.ajax({
+      url:'skills/edit_desktop_notifications',
+      type: 'post',
+      async: true,
+      data: {desktop_notification_threshold : myonoffswitch.checked ? 1 : 0},
+      success: function(result){
+        myNotification.show();
+      },
+      error: function(err){
+        myNotification.show();
+      }
+    });
+  });
+
+
+</script>

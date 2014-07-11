@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  QueueCount: 1
+  AbandonRate: 1.5
+  AgentsWorking: 1
+  AgentsUnavailable: 1
+  LongestQueueDur: 1.5
+  AverageWrapTime: 1.5
+  AverageSpeedToAnswer: 1.5
+  AverageTalkTime: 1.5
+
+two:
+  QueueCount: 1
+  AbandonRate: 1.5
+  AgentsWorking: 1
+  AgentsUnavailable: 1
+  LongestQueueDur: 1.5
+  AverageWrapTime: 1.5
+  AverageSpeedToAnswer: 1.5
+  AverageTalkTime: 1.5

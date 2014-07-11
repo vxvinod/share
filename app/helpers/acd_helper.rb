@@ -1,0 +1,2 @@
+module AcdHelper
+end

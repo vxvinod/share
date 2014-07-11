@@ -1,0 +1,29 @@
+		<!DOCTYPE html>
+<html>
+
+<head>
+  <title>ACD Viewer | CustomInk</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag '/customink_logo.png' , :type => 'image/png' %>
+</head>
+
+<body>
+<figure id="page-load-graphic"></figure>
+<div class="container">
+	<header>
+		<span class="title-heading">
+			<span class="customink">ACD</span>
+			Viewer
+			<%= image_tag("ajax-loader.gif", size: "22x22", :id => "pagination_image", :hidden => true) %>
+			<i class="fa fa-gear fa-1x md-trigger" data-modal="modal-1" id="thresholdSettings" style="display:none"/></i>
+			</div>
+		</span>
+		<hr/><br/>
+	</header>
+	<%= yield %>
+</div> <!-- Container Tag Ends -->
+
+</body>
+</html>

@@ -1,0 +1,248 @@
+<div class="leftcol">
+	<div class="col1">
+
+		<!-- Table Heading -->
+		<div class="colTitle">
+			<div class="tableHeading">Sales</div>
+		</div>
+
+		<!-- Sales Queue  -->
+		<div class="queue">
+			<div class="queueTitle">
+				Queue
+			</div>
+			<div class="queueValue">
+				<%= @sales_api_data['QueueCount'] %>
+				<div class="past-QueueValue"><%= @past_sales_api_data['QueueCount'] %></div>
+			</div>
+		</div>
+
+		<!-- Abandon Count/Rate Values -->
+		<div class="abandon">
+			<div class="abandonTitle">
+				<span class="abandonRate">Abandon Rate</span>
+			</div>
+			<div class="abandonValues">
+				<div id='salesAbandonRate' class="abandonRateValue">
+						<%= @sales_api_data['AbandonRate'] %>
+				</div>
+				<div class="past-AbandonRate"><%= @past_sales_api_data['AbandonRate'] %></div>
+			</div>
+		</div>
+
+		<!-- Agent Unavailable/Working Values -->
+		<div class="agentsDetails">
+			<div class="agentsDetailsTitle">
+				<span class="agentsWorking">
+					<span class="agentsWorkingValue">
+						Agents Working
+					</span>
+				</span>
+				<span class="agentsAvailable">
+					Agents Unavailable
+				</span>
+			</div>
+			<div class="agentsValues">
+				<div class="agentsWorkingVal">
+					<div class="agentsWorkingCountVal">
+						<%= @sales_api_data['AgentsWorking'] %>
+					</div>
+					<div class="past-AgentsWorking"><%= @past_sales_api_data['AgentsWorking'] %></div>
+				</div>
+				<div class="agentsAvailaValue">
+					<%= @sales_api_data['AgentsUnavailable'] %>
+					<div class="past-AgentsAvailable"><%= @past_sales_api_data['AgentsUnavailable'] %></div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Longest Queue Duration Values -->
+		<div class="longestQueue">
+			<div class="longestQueueTitle">
+				Longest Queue
+			</div>
+			<div class="longestQueueValue">
+				<%= @sales_api_data['LongestQueueDur'] %>
+				<div class="past-LongestQueueValue"><%= @past_sales_api_data['LongestQueueDur'] %></div>
+			</div>
+		</div>
+
+		<!-- Average Wrap Time/Speed Time/Talk Time Values -->
+		<div class="average">
+			<div class="averageTitle">
+				<span class="avgWrapTitle">
+					Avg Wrap Time					
+				</span>
+				<span class="avgSpeedTitle">
+					Avg Speed to Answer
+				</span>
+				<span class="avgTalkTitle">
+					Avg Talk Time
+				</span>
+			</div>
+			<div class="averageDetails">
+				<div class="avgWrapDetails">
+					<%= @sales_api_data['AverageWrapTime'] %>
+					<div class="past-avg-WrapDetails"><%= @past_sales_api_data['AverageWrapTime'] %></div>
+				</div>
+				<div class="avgSpeedDetails">
+					<%= @sales_api_data['AverageSpeedToAnswer'] %>
+					<div class="past-avg-SpeedDetails"><%= @past_sales_api_data['AverageSpeedToAnswer'] %></div>
+				</div>
+				<div class="avgTalkDetails">
+					<%= @sales_api_data['AverageTalkTime'] %>
+					<div class="past-avg-TalkDetails"><%= @past_sales_api_data['AverageTalkTime'] %></div>
+				</div>
+			</div>
+		</div>
+
+	</div> <!--End of Sales Data -->
+</div>
+
+<div class="col2">
+	
+		<!-- Table Heading -->
+		<div class="colTitle">
+			<div class="tableHeading">Service</div>
+		</div>
+
+		<!-- Service Queue  -->
+		<div class="queue">
+			<div class="queueTitle">
+				Queue
+			</div>
+			<div class="queueValue">
+				<%= @service_api_data['QueueCount'] %>
+				<div class="past-QueueValue"><%= @past_service_api_data['QueueCount'] %></div>
+			</div>
+		</div>
+
+		<!-- Abandon Count/Rate Values -->
+		<div class="abandon">
+			<div class="abandonTitle">
+				<span class="abandonRate">Abandon Rate</span>
+			</div>
+			<div class="abandonValues">
+				<div id='serviceAbandonRate' class="abandonRateValue">
+						<%= @service_api_data['AbandonRate'] %>
+				</div>
+				<div class="past-AbandonRate"><%= @past_service_api_data['AbandonRate'] %></div>
+			</div>
+		</div>
+
+		<!-- Agent Unavailable/Working Values -->
+		<div class="agentsDetails">
+			<div class="agentsDetailsTitle">
+				<span class="agentsWorking">
+					<span class="agentsWorkingValue">
+						Agents Working
+					</span>
+				</span>
+				<span class="agentsAvailable">
+					Agents Unavailable
+				</span>
+			</div>
+			<div class="agentsValues">
+				<div class="agentsWorkingVal">
+					<div class="agentsWorkingCountVal">
+						<%= @service_api_data['AgentsWorking'] %>
+					</div>
+					<div class="past-AgentsWorking"><%= @past_service_api_data['AgentsWorking'] %></div>
+				</div>
+				<div class="agentsAvailaValue">
+					<%= @service_api_data['AgentsUnavailable'] %>
+					<div class="past-AgentsAvailable"><%= @past_service_api_data['AgentsUnavailable'] %></div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Longest Queue Duration Values -->
+		<div class="longestQueue">
+			<div class="longestQueueTitle">
+				Longest Queue
+			</div>
+			<div class="longestQueueValue">
+				<%= @service_api_data['LongestQueueDur'] %>
+				<div class="past-LongestQueueValue"><%= @past_service_api_data['LongestQueueDur'] %></div>
+			</div>
+		</div>
+
+		<!-- Average Wrap Time/Speed Time/Talk Time Values -->
+		<div class="average">
+			<div class="averageTitle">
+				<span class="avgWrapTitle">
+					Avg Wrap Time					
+				</span>
+				<span class="avgSpeedTitle">
+					Avg Speed to Answer
+				</span>
+				<span class="avgTalkTitle">
+					Avg Talk Time
+				</span>
+			</div>
+			<div class="averageDetails">
+				<div class="avgWrapDetails">
+					<%= @service_api_data['AverageWrapTime'] %>
+					<div class="past-avg-WrapDetails"><%= @past_service_api_data['AverageWrapTime'] %></div>
+				</div>
+				<div class="avgSpeedDetails">
+					<%= @service_api_data['AverageSpeedToAnswer'] %>
+					<div class="past-avg-SpeedDetails"><%= @past_service_api_data['AverageSpeedToAnswer'] %></div>
+				</div>
+				<div class="avgTalkDetails">
+					<%= @service_api_data['AverageTalkTime'] %>
+					<div class="past-avg-TalkDetails"><%= @past_service_api_data['AverageTalkTime'] %></div>
+				</div>
+			</div>
+		</div>
+</div><!-- End of Service Data Values -->
+
+<!-- Queue Counter Values -->
+<div class="queueCounter">
+	<div class="colTitle">
+		<div class="tableHeading">Queue Counter</div>
+	</div>
+	<table class="queueCounterValues">
+		<tr>
+			<th>Name</th>
+			<th>Incoming</th>
+			<th>Abandon</th>
+			<th>Abandon%</th>
+		</tr>
+		<tbody>	
+			<% @queue_counter_data.each do |json| %>
+					<tr>
+						<td> <%= json['name'] %> </td>
+						<td> <%= json['incoming'] %> </td>
+						<td> <%= json['abandon'] %> </td>
+						<td> <%= json['abandon_percent'] %> </td>
+					</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div><!-- END : Queue Counter Values -->
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+	serviceAbandonThreshold.value = <%= $service_threshold_value %> ;
+    salesAbandonThreshold.value = <%= $sales_threshold_value %> ;
+	
+	<%= @sales_api_data['AbandonRate'] %> < <%= $sales_threshold_value %> ? $('#salesAbandonRate').addClass('warnAlert') : (<%= @sales_api_data['AbandonRate'] %> < 15.0 ? $('#salesAbandonRate').addClass('yellowColor') : $('#salesAbandonRate').addClass('safeZone'));
+	<%= @service_api_data['AbandonRate'] %> < <%= $service_threshold_value %> ? $('#serviceAbandonRate').addClass('warnAlert') : (<%= @service_api_data['AbandonRate'] %> < 15.0 ? $('#serviceAbandonRate').addClass('yellowColor') : $('#serviceAbandonRate').addClass('safeZone'));
+
+});
+
+var thresholdAlert = new Notify('ACD Viewer Alert', {
+	body: 'Abandonrate below threshold',
+	icon: '/customink_logo.png'
+});
+
+if (<%= $desktop_notifications %>){
+	if ((<%= @sales_api_data['AbandonRate'] %> < <%= $sales_threshold_value %>)||(<%= @service_api_data['AbandonRate'] %> < <%= $service_threshold_value %> ))
+		thresholdAlert.show();
+}
+
+
+</script>
